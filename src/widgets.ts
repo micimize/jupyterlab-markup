@@ -7,6 +7,8 @@ import {diagramPlugin} from "markdown-it-diagrams";
 import * as MarkdownIt from "markdown-it";
 import * as MarkdownItFootnote from "markdown-it-footnote"
 import * as MarkdownItDeflist from "markdown-it-deflist"
+//import * as MarkdownItWikilinks from "@gerhobbelt/markdown-it-wikilinks"
+//import slugify from 'slugify'
 
 
 function highlightCode(str: string, lang: string) {
@@ -59,7 +61,22 @@ export class RenderedMarkdown extends RenderedHTMLCommon {
         })
             .use(diagramPlugin)
             .use(MarkdownItFootnote)
-            .use(MarkdownItDeflist);
+            .use(MarkdownItDeflist)
+            /*
+            .use(MarkdownItWikilinks, {
+              uriSuffix: '', 
+              htmlAttributes: {
+                rel: "noopener",
+                target: "_blank",
+                "data-autoresolve": true,
+                // data-commandlinker-args="{&quot;path&quot;:&quot;index&quot;,&quot;id&quot;:&quot;&quot;}"
+                // "data-commandlinker-command": "rendermime:handle-local-link",
+              },
+              generatePageNameFromLabel: (path: string) => path
+                .split('/')
+                .map(seg => slugify(seg.trim(), { replacement: '_', lower: true }))
+                .join('/')
+            })*/;
     }
 
     /**

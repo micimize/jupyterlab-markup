@@ -1,17 +1,7 @@
-import {IRenderMimeRegistry} from '@jupyterlab/rendermime';
-import {markupRendererFactory} from "./factories";
-import {JupyterFrontEnd, JupyterFrontEndPlugin} from '@jupyterlab/application';
+import autoResolvingRenderMime from './auto-resolve'
+import markdownItBundle from './markdown-it-bundle'
 
-
-const extension: JupyterFrontEndPlugin<void> = {
-    id: '@agoose77/jupyterlab-markup',
-    autoStart: true,
-    requires: [IRenderMimeRegistry],
-    activate: (app: JupyterFrontEnd, registry: IRenderMimeRegistry) => {
-        console.log('JupyterLab extension @agoose77/jupyterlab-markup is activated!');
-        registry.addFactory(markupRendererFactory);
-    }
-};
-
-
-export default extension;
+export default [
+  autoResolvingRenderMime,
+  markdownItBundle,
+]
