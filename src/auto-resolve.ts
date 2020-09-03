@@ -100,6 +100,7 @@ function activate(
         const path = args['path'] as string | undefined | null;
         const id = args['id'] as string | undefined | null;
         const autoResolve = (args['autoResolve'] as boolean) || false;
+        console.log(path, id, autoResolve);
 
         if (!path) {
           return;
@@ -139,6 +140,7 @@ function activate(
               return;
             }
             const autoResolve = !!node.dataset.autoresolve;
+            // eagerly wires the handleLink args on initial
             app.commandLinker.connectNode(node, CommandIDs.handleLink, {
               autoResolve,
               path,

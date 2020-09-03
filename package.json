@@ -35,7 +35,6 @@
     "@jupyterlab/codemirror": "^2.0.2",
     "@jupyterlab/fileeditor": "^2.0.2",
     "@jupyterlab/markdownviewer": "^2.0.2",
-    "@jupyterlab/markdownviewer": "^2.0.2",
     "@jupyterlab/rendermime": "^2.0.2",
     "@jupyterlab/rendermime-interfaces": "^2.0.1",
     "@lumino/messaging": "^1.3.3",
@@ -49,7 +48,6 @@
   },
   "devDependencies": {
     "@jupyterlab/docmanager": "^2.2.2",
-    "@jupyterlab/translation": "^3.0.0-beta.1",
     "@types/codemirror": "^0.0.74",
     "@types/markdown-it": "^0.0.9",
     "@types/markdown-it-container": "^2.0.2",

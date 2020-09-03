@@ -1,14 +1,16 @@
 import {RenderedHTMLCommon} from "@jupyterlab/rendermime"
 import {IRenderMime} from '@jupyterlab/rendermime-interfaces';
-import {Message} from '@lumino/messaging';
-import * as renderers from "./renderers";
 import {CodeMirrorEditor, Mode} from '@jupyterlab/codemirror';
+import {Message} from '@lumino/messaging';
+
 import {diagramPlugin} from "markdown-it-diagrams";
 import * as MarkdownIt from "markdown-it";
 import * as MarkdownItFootnote from "markdown-it-footnote"
 import * as MarkdownItDeflist from "markdown-it-deflist"
-//import * as MarkdownItWikilinks from "@gerhobbelt/markdown-it-wikilinks"
-//import slugify from 'slugify'
+import MarkdownItWikilinks from "./markdown-it-wikilinks"
+import slugify from 'slugify'
+
+import * as renderers from "./renderers";
 
 
 function highlightCode(str: string, lang: string) {
@@ -62,7 +64,6 @@ export class RenderedMarkdown extends RenderedHTMLCommon {
             .use(diagramPlugin)
             .use(MarkdownItFootnote)
             .use(MarkdownItDeflist)
-            /*
             .use(MarkdownItWikilinks, {
               uriSuffix: '', 
               htmlAttributes: {
@@ -76,7 +77,8 @@ export class RenderedMarkdown extends RenderedHTMLCommon {
                 .split('/')
                 .map(seg => slugify(seg.trim(), { replacement: '_', lower: true }))
                 .join('/')
-            })*/;
+            });
+      console.log('wtf')
     }
 
     /**

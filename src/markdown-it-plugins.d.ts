@@ -30,3 +30,18 @@ declare module '@gerhobbelt/markdown-it-wikilinks' {
     const MarkdownItWikilinks: typeof markdownItWikilinks.wikilinks_plugin;
     export = MarkdownItWikilinks;
 }
+
+declare module 'sanitize-filename' {
+  namespace Sanitize {
+    function sanitize(
+      input: string,
+      options?: {
+        replacement?: string | ((substring: string) => string);
+      }
+    ): string;
+  }
+  const sanitize: typeof Sanitize.sanitize;
+
+  export = sanitize;
+
+}
