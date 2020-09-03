@@ -19,7 +19,6 @@ function highlightCode(str: string, lang: string) {
     }
     try {
         let spec = Mode.findBest(lang);
-        console.log(spec);
         if (!spec) {
             console.log(`No CodeMirror mode: ${lang}`);
             return;
@@ -67,9 +66,11 @@ export class RenderedMarkdown extends RenderedHTMLCommon {
             .use(MarkdownItWikilinks, {
               uriSuffix: '', 
               htmlAttributes: {
-                rel: "noopener",
-                target: "_blank",
-                "data-autoresolve": true,
+                "class": "autoresolve wikilink" 
+                // TODO nonstandard attrs seem to be stripped
+                /*
+                "data-autoresolve": "true",
+                */
                 // data-commandlinker-args="{&quot;path&quot;:&quot;index&quot;,&quot;id&quot;:&quot;&quot;}"
                 // "data-commandlinker-command": "rendermime:handle-local-link",
               },
@@ -78,7 +79,6 @@ export class RenderedMarkdown extends RenderedHTMLCommon {
                 .map(seg => slugify(seg.trim(), { replacement: '_', lower: true }))
                 .join('/')
             });
-      console.log('wtf')
     }
 
     /**

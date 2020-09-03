@@ -49,6 +49,7 @@ const defaultSetup = {
       htmlAttrs.push(`${attrName}="${setup.encodeHtmlAttr(attrValue)}"`);
     }
     htmlAttrsString = htmlAttrs.join(' ');
+    console.log(`<a ${htmlAttrsString}>${label}</a>`)
 
     return `<a ${htmlAttrsString}>${label}</a>`;
 

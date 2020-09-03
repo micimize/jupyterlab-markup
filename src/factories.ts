@@ -10,8 +10,5 @@ export const markdownItRendererFactory: IRenderMime.IRendererFactory = {
     safe: true,
     mimeTypes: [MIME_TYPE],
     defaultRank: 60,
-    createRenderer: options => {
-      console.log('dear god please end my suffering')
-      return new RenderedMarkdown(options)
-    }
+    createRenderer: options => new RenderedMarkdown(options)
 };

@@ -34,8 +34,12 @@ function defaultStub(fileName: string){
           `# ${header}`
         ]
       }
-    ]
-  }// as nbformat.INotebookContent
+    ],
+    "metadata": {
+    },
+    "nbformat": 4,
+    "nbformat_minor": 4
+  }
 }
 
 namespace CommandIDs {
@@ -100,7 +104,6 @@ function activate(
         const path = args['path'] as string | undefined | null;
         const id = args['id'] as string | undefined | null;
         const autoResolve = (args['autoResolve'] as boolean) || false;
-        console.log(path, id, autoResolve);
 
         if (!path) {
           return;
@@ -115,7 +118,7 @@ function activate(
         const extensions =  fileName.includes('.') ? [] : ['.ipynb', '.md']
         for (const extension of extensions){
           try {
-            return open(path + extension, id);
+            return await open(path + extension, id);
           } catch (e) {
             // we just catch all open attempts.
             // TODO option to autoresolve but not autocreate
@@ -139,10 +142,9 @@ function activate(
             if (node.tagName === 'A' && node.hasAttribute('download')) {
               return;
             }
-            const autoResolve = !!node.dataset.autoresolve;
             // eagerly wires the handleLink args on initial
             app.commandLinker.connectNode(node, CommandIDs.handleLink, {
-              autoResolve,
+              autoResolve: node.className.includes('autoresolve'),
               path,
               id
             });
